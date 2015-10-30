@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <title>이미지맵 추출기</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <style>
     #image>div{position:absolute;background:rgba(0,0,0,0.5);}
     .mapResult>div{display:none;}
-        .mapResult>div>textarea{width:100%;height:150px;}
+    .mapResult>div>textarea{width:100%;height:150px;}
+        .btnSec{padding-top:15px;text-align:right;}
     </style>
 </head>
 <body>
@@ -17,7 +19,11 @@
             <div id="image"></div>
         </div>
         <div class="col-xs-4">
-
+            <div class="btnSec">
+            <button type="button" class="btn btn-xs btn-info"><i class="fa fa-github-square fa-2x"></i></button>
+            <button type="button" class="btn btn-xs btn-info"><i class="fa fa-download fa-2x"></i></button>
+            <button type="button" class="btn btn-xs btn-info"><i class="fa fa-question-circle fa-2x"></i></button>
+            </div>
             <h1>사용법</h1>
             <ul>
                 <li>이미지 경로를 넣고 셋팅하기를 누르세요.</li>
@@ -33,7 +39,7 @@
             <h2>1. 이미지경로(URL)</h2>
             <div class="form-group">
                 <div class="form-inline">
-                    <input type="text" class="form-control" name="" id="url" placeholder="이미지경로" /> <button class="btn btn-default" onclick="setupFn();">셋팅하기</button>
+                    <input type="text" class="form-control" name="" id="url" placeholder="이미지경로" value="http://localhost/images/event/inc/event20151030001/event20151030001_ec.jpg" /> <button class="btn btn-default" onclick="setupFn();">셋팅하기</button>
                 </div>
             </div>
 

@@ -1,3 +1,7 @@
+//TODO 이미지 가로값 px없음
+// TODO 맵 삭제 기능 필요
+// TODO github가기 , 다운로드 , 도움말 넣기
+
 function getOffset(e){
     return {x:Math.ceil(e.offsetX),y:Math.ceil(e.offsetY)};
 };
@@ -60,8 +64,8 @@ function crwalMapFn(type){
     };
     if(type=="px" || type=="per"){ // 값으로 뽑아내기.
         var styleText = "<style>\n";
-        styleText += "."+$("#imageId").val()+"{position:relative;width:"+$("#imageWidth").val()+";height:"+$("#imageHeight").val()+";}\n";
-        styleText += "."+$("#imageId").val()+" div{position:absolute;}\n";
+        styleText += "#"+$("#imageId").val()+"{position:relative;}\n";
+        styleText += "#"+$("#imageId").val()+" div{position:absolute;}\n";
         var htmlText = "<div id='"+$("#imageId").val()+"'>\n";
         $(mapArr).each(function(idx,data){
             var wid = ($("#imageWidth").val())*1;
@@ -136,20 +140,24 @@ function mapFn(){
                 style += "z-index:"+rela+";width:"+Math.abs(x)+"px;height:"+Math.abs(y)+"px;";
                 target.attr("style",style);
                 ePos = mPos;
-            }else{
-                makeBox = false;
-                return;
             };
         };
 
     });
-    $("#image").on("mouseup",function(e){
+    $("#image").on("mouseup",function(){
         if(mMove && ePos){
             var x = target.width();
             var y = target.height();
             var str = ((0<x) ? sPos.x : ePos.x)+","+((0<y) ? sPos.y : ePos.y)+","+((0<x) ? ePos.x : sPos.x)+","+((0<y) ? ePos.y : sPos.y);
             target.attr("coords",str);
-            target.append("<input type='text' class='title' placeholder='버튼설명' /><input type='text' class='url' placeholder='링크경로' />");
+            target.append("<input type='text' class='title' placeholder='버튼설명' />");
+            target.append("<input type='text' class='url' placeholder='링크경로' />");
+            var del = $('<button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></button>');
+            del.on("click",function(e){
+                makeBox = false;
+                $(this).parent().remove();
+            });
+            target.append(del);
             target = sPos = mPos = ePos = null;
         };
         setTimeout(function(){
