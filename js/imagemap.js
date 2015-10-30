@@ -13,7 +13,7 @@ function setupFn(){
         id = ($("#url").val()).split(".")[0];
         $("#imageWidth").val(w);
         $("#imageHeight").val(h);
-        $("#imageId").val(id);
+        $("#imageId").val((($("#imageId").val()=="") ? "imagemap" : $("#imageId").val()));
         $("#image").css({
             width:w,
             height:h,
@@ -144,11 +144,9 @@ function mapFn(){
 
     });
     $("#image").on("mouseup",function(e){
-        if(mMove){
+        if(mMove && ePos){
             var x = target.width();
             var y = target.height();
-            console.log(sPos);
-            console.log(ePos);
             var str = ((0<x) ? sPos.x : ePos.x)+","+((0<y) ? sPos.y : ePos.y)+","+((0<x) ? ePos.x : sPos.x)+","+((0<y) ? ePos.y : sPos.y);
             target.attr("coords",str);
             target.append("<input type='text' class='title' placeholder='버튼설명' /><input type='text' class='url' placeholder='링크경로' />");
