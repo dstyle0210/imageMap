@@ -1,0 +1,140 @@
+/* Custom Bootstrap */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+.btn-link {
+  background: #f5f5f5;
+}
+.container-fluid {
+  height: 100%;
+}
+.row {
+  height: 100%;
+}
+.imageCanvas {
+  height: 100%;
+  overflow: auto;
+  padding: 0;
+  border-right: 1px dashed #ccc;
+  background: #f5f5f5;
+}
+/* 이미지에 올라가는 DIV설정 */
+#image > div {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+}
+#image .imageTitle {
+  display: inline-block;
+  margin-top: 30%;
+  font-size: 22px;
+  width: 100%;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+  color: #999;
+}
+/* 상단 부분 */
+header {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+header h1 {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+}
+header h1 span {
+  color: #5bc0de;
+}
+header p {
+  padding-top: 10px;
+  font-family: 'Architects Daughter', cursive;
+  font-weight: 400;
+}
+/* 버튼 부분 */
+.btnSec {
+  padding-top: 15px;
+  text-align: center;
+}
+/* 입력폼 */
+.imageControl {
+  position: relative;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 300;
+  color: #333;
+}
+.imageControl h2 {
+  font-size: 18px;
+  font-weight: 300;
+}
+.imageControl button.focus {
+  background: #31b0d5;
+  border-color: #269abc;
+  color: #fff;
+}
+.imageControl button.active {
+  background: #31b0d5;
+  border-color: #269abc;
+  color: #fff;
+}
+.imageControl .step1Sec {
+  position: relative;
+}
+.imageControl .step1Sec .history {
+  display: none;
+}
+.imageControl .step1Sec .historyBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.imageControl .step1Sec ul,
+.imageControl .step1Sec li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.imageControl .step1Sec li {
+  padding-bottom: 5px;
+}
+.imageControl .step2Sec label {
+  font-size: 11px;
+}
+.imageControl .step3Sec button,
+.imageControl .step3Sec h3 {
+  font-family: 'Droid Sans', sans-serif;
+}
+.imageControl .step3Sec h3 {
+  font-size: 16px;
+  font-weight: 500;
+}
+.imageControl .copyright {
+  margin-top: 15px;
+  padding: 15px 0;
+  border-top: 1px dashed #ccc;
+  width: 100%;
+  overflow: hidden;
+  font-size: 13px;
+  color: #333;
+  text-align: center;
+}
+.imageControl .copyright a,
+.imageControl .copyright span {
+  font-family: 'Droid Sans', sans-serif;
+}
+.imageControl .copyright .maintained {
+  padding-top: 4px;
+  float: left;
+}
+.imageControl .copyright .familysite {
+  float: right;
+}
+/* 결과 */
+.mapResult > div {
+  display: none;
+}
+.mapResult > div > textarea {
+  width: 100%;
+  height: 150px;
+}

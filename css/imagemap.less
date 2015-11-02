@@ -1,0 +1,62 @@
+/* Custom Bootstrap */
+html,body{height:100%;overflow: hidden;}
+.btn-link{background:#f5f5f5;}
+.container-fluid{height:100%;}
+.row{height:100%;}
+.imageCanvas{height:100%;overflow:auto;padding:0;border-right:1px dashed #ccc;background:#f5f5f5;}
+
+
+/* 이미지에 올라가는 DIV설정 */
+#image>div{position:absolute;background:rgba(0,0,0,0.5);}
+#image .imageTitle{display:inline-block;margin-top:30%;font-size:22px;width:100%;font-family: 'Noto Sans KR', sans-serif;text-align:center;color:#999;}
+
+
+/* 상단 부분 */
+header{width:100%;overflow: hidden;text-align:center;
+  h1{font-family: 'Pacifico', cursive;font-weight:400;
+    span{color:#5bc0de;}
+  }
+  p{padding-top:10px;font-family: 'Architects Daughter', cursive;font-weight:400;}
+}
+
+/* 버튼 부분 */
+.btnSec{padding-top:15px;text-align:center;}
+
+/* 입력폼 */
+.imageControl{position:relative;font-family: 'Noto Sans KR', sans-serif;font-weight:300;color:#333;
+  // 공통
+  h2{font-size:18px;font-weight:300;}
+  button.focus{background:#31b0d5;border-color:#269abc;color:#fff;}
+  button.active{background:#31b0d5;border-color:#269abc;color:#fff;}
+
+  // 이미지경로
+  .step1Sec{position:relative;
+    .history{display:none;}
+    .historyBtn{position:absolute;top:0;right:0;}
+    ul,li{margin:0;padding:0;list-style:none;}
+    li{padding-bottom:5px;}
+  }
+  // 이미지정보
+  .step2Sec{
+    label{font-size:11px;}
+  }
+  // 선택된 이미지맵 정보
+  .step3Sec{
+    button,h3{font-family: 'Droid Sans', sans-serif;}
+    h3{font-size:16px;font-weight:500;}
+  }
+
+
+  .copyright{margin-top:15px;padding:15px 0;border-top:1px dashed #ccc;width:100%;overflow: hidden;font-size:13px;color:#333;text-align:center;
+    a,span{font-family: 'Droid Sans', sans-serif;}
+    .maintained{padding-top:4px;float:left;  }
+    .familysite{float:right;}
+  }
+}
+
+/* 결과 */
+.mapResult{
+  >div{display:none;
+    >textarea{width:100%;height:150px;}
+  }
+}

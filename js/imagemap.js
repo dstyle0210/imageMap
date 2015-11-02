@@ -1,33 +1,56 @@
 //TODO 이미지 가로값 px없음
 // TODO 맵 삭제 기능 필요
 // TODO github가기 , 다운로드 , 도움말 넣기
+// TODO 기존 적용내역 저장 -> 웹스토리지
 
+
+
+// Core Method 들.
 function getOffset(e){
     return {x:Math.ceil(e.offsetX),y:Math.ceil(e.offsetY)};
 };
 function setAbsStyle(property,px){
     return (property+":"+Math.abs(px)+"px;");
-}
+};
+function setUsedElement(){
+    var $element = {
+        url:$("#url"),
+        wid:$("#imageWidth"),
+        hei:$("#imageHeight"),
+        id:$("#imageId"),
+        canvas:$("#image"),
+        html:$("#html"),
+        css:$("#style"),
+        usemap:$("#usemap")
+    };
+    return $element;
+};
+var $obj;
+$(function(){
+    $obj = setUsedElement(); // 사용되는 모든 엘리먼트 불러오기.
+});
+
+
 function setupFn(){
     var img = new Image();
-    var w, h,id;
+    var w, h, url;
+    var url = $obj.url.val();
     $(img).on("load",function(){
         w = $(this).width();
         h = $(this).height();
-        id = ($("#url").val()).split(".")[0];
-        $("#imageWidth").val(w);
-        $("#imageHeight").val(h);
-        $("#imageId").val((($("#imageId").val()=="") ? "imagemap" : $("#imageId").val()));
-        $("#image").css({
+        $obj.wid.val(w);
+        $obj.hei.val(h);
+        $obj.id.val("imagemap");
+        $obj.canvas.css({
             width:w,
             height:h,
             "overflow":"hidden",
-            "background":"url('"+$("#url").val()+"') no-repeat"
-        }).find("img").hide();
+            "background":"url('"+url+"') no-repeat"
+        }).find("img,span").hide();
         mapFn();
     });
-    $("#image").append(img);
-    img.src = $("#url").val();
+    $obj.canvas.append(img);
+    img.src = url;
 };
 
 // 데이터 가져오기
@@ -80,7 +103,7 @@ function crwalMapFn(type){
             };
 
             // CSS 구문
-            styleText += "."+$("#imageId").val()+" .map"+idx+"{top:"+s.top+";left:"+s.left+";width:"+ s.width+";height:"+ s.height+"}\n";
+            styleText += "#"+$("#imageId").val()+" .map"+idx+"{top:"+s.top+";left:"+s.left+";width:"+ s.width+";height:"+ s.height+"}\n";
 
             // HTML구문
             htmlText += "<div class='map"+idx+"'><a href='"+data.url+"' title='"+data.title+"'></a></div>\n";

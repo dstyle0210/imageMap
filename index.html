@@ -3,72 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <title>이미지맵 추출기</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <style>
-    #image>div{position:absolute;background:rgba(0,0,0,0.5);}
-    .mapResult>div{display:none;}
-    .mapResult>div>textarea{width:100%;height:150px;}
-        .btnSec{padding-top:15px;text-align:right;}
-    </style>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Pacifico|Architects+Daughter|Droid+Sans" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/1.1.1/introjs.min.css" />
+    <link rel="stylesheet" type="text/css" href="/imageMap/css/imagemap.css/" />
 </head>
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-8" style="padding:0;border-right:1px dashed #ccc;background:#f5f5f5;">
-            <div id="image"></div>
+        <div class="imageCanvas col-xs-8">
+            <div id="image">
+                <span class="imageTitle" data-step="3" data-intro="연결하면 이곳에 이미지가 나타납니다!"><i class="fa fa-chain-broken fa-4x"></i><br />이미지를 연결해주세요.</span>
+            </div>
         </div>
-        <div class="col-xs-4">
-            <div class="btnSec">
-            <button type="button" class="btn btn-xs btn-info"><i class="fa fa-github-square fa-2x"></i></button>
-            <button type="button" class="btn btn-xs btn-info"><i class="fa fa-download fa-2x"></i></button>
-            <button type="button" class="btn btn-xs btn-info"><i class="fa fa-question-circle fa-2x"></i></button>
+        <div class="imageControl col-xs-4">
+            <div class="controlSec">
+                <header data-step="1" data-intro="이미지맵 위치를 만들어주는 사이트입니다.">
+                    <h1><span>i</span>mage<span>M</span>ap</h1>
+                    <p>HTML <strong>"imageMap"</strong> Algorism Genenater</p>
+                </header>
+                <section class="btnSec">
+                    <a href="https://github.com/dstyle0210/imageMap" class="btn btn-xs btn-info" target="_blank" title="ImageMap GitHub 페이지 바로가기"><i class="fa fa-github-square fa-2x"></i></a>
+                    <a href="https://github.com/dstyle0210/imageMap/tags" class="btn btn-xs btn-info" target="_blank" title="imageMap 다운로드 페이지 바로가기"><i class="fa fa-download fa-2x"></i></a>
+                    <button type="button" class="btn btn-xs btn-info" title="도움말 다시보기" data-step="7" data-intro="다시 보실려면 도움말을 클릭해주세요!" onclick="introguide.start();"><i class="fa fa-question-circle fa-2x"></i></button>
+                </section>
+                <section class="stepSec step1Sec" data-step="2" data-intro="이미지맵을 구할 이미지경로(URL)을 넣고 '연결하기'를 누르세요!">
+                    <h2>1. 이미지경로(URL)</h2>
+                    <div class="historyBtn" data-step="4" data-intro="한번 사용했던 URL을 사용자의 PC에 자동저장되고,불러올수 있어요!(최대 5개)"><button type="button" class="btn btn-xs btn-default" title="기존 URL 불러오기"><i class="fa fa-cloud-download fa-lg"></i> 최근 URL</button></div>
+                    <ul class="history">
+                        <li><button class="btn btn-xs btn-default"><i class="fa fa-link"></i> http://localhost/images/common/djasdasd.jpg</button></li>
+                        <li><button class="btn btn-xs btn-default"><i class="fa fa-link"></i> http://localhost/images/common/djasdasd.jpg</button></li>
+                        <li><button class="btn btn-xs btn-default"><i class="fa fa-link"></i> http://localhost/images/common/djasdasd.jpg</button></li>
+                        <li><button class="btn btn-xs btn-default"><i class="fa fa-link"></i> http://localhost/images/common/djasdasd.jpg</button></li>
+                    </ul>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="url" placeholder="이미지경로" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-info" type="button" onclick="setupFn();">연결하기</button>
+                        </span>
+                    </div>
+                </section>
+                <section class="stepSec step2Sec" data-step="5" data-intro="불러와진 이미지의 가로,세로,아이디(파일명)이 들어와요.">
+                    <h2>2. 이미지정보</h2>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="input-group">
+                                <label for="imageWidth" class="input-group-addon">가로(px)</label>
+                                <input type="text" class="form-control" name="" id="imageWidth" />
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="input-group">
+                                <label for="imageHeight" class="input-group-addon">세로(px)</label>
+                                <input type="text" class="form-control" name="" id="imageHeight" />
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="input-group">
+                                <label for="imageId" class="input-group-addon">아이디(#)</label>
+                                <input type="text" class="form-control" name="" id="imageId" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="stepSec step3Sec">
+                    <h2>3. 선택된 이미지맵 정보</h2>
+                    <div class="btn-group btn-group-justified" data-step="6" data-intro="원하는 코드 방식으로 데이터를 가져올수 있어요!">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default" onclick="crwalMapFn('coords');">Coords</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default" onclick="crwalMapFn('px');">Position(px)</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default" onclick="crwalMapFn('per');">Position(%)</button>
+                        </div>
+                    </div>
+                    <div class="mapResult">
+                        <div id="usemap">
+                            <h3>Usemap Code</h3>
+                            <textarea class="form-control"></textarea>
+                        </div>
+                        <div id="style">
+                            <h3>CSS</h3>
+                            <textarea class="form-control"></textarea>
+                        </div>
+                        <div id="html">
+                            <h3>HTML</h3>
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <h1>사용법</h1>
-            <ul>
-                <li>이미지 경로를 넣고 셋팅하기를 누르세요.</li>
-                <li>불러진 이미지 및 가로,세로,아이디를 확인하세요</li>
-                <li>가로,세로,아이디는 변경 가능합니다.</li>
-                <li>이미지에서 드래그를 하면 이미지맵이 발생합니다.</li>
-                <li>링크의 타이틀과, 링크경로를 넣어주세요.</li>
-                <li>coored , Position(PX) , Position(%) 버튼을 누르시면 코드가 나옵니다.</li>
-                <li>10px * 10px 이하의 이미지맵은 만들수 없습니다.</li>
-                <li>제목을 넣지 않으시면, 데이터가 나오지 않으니 주의하세요.</li>
-            </ul>
-
-            <h2>1. 이미지경로(URL)</h2>
-            <div class="form-group">
-                <div class="form-inline">
-                    <input type="text" class="form-control" name="" id="url" placeholder="이미지경로" value="http://localhost/images/event/inc/event20151030001/event20151030001_ec.jpg" /> <button class="btn btn-default" onclick="setupFn();">셋팅하기</button>
+            <div class="copyright">
+                <div class="maintained"><span>This project is maintained by <a href="#">Dstyle</a></span></div>
+                <div class="familysite">
+                    <a href="http://dstyle0210.github.io/" class="btn btn-xs btn-default" title="Dstyle - Front-End Developer" target="_blank"><i class="fa fa-krw"></i> Dstyle</a>
+                    <a href="http://dstyle0210.github.io/papers/" class="btn btn-xs btn-default" title="Papers - Pages Structure Of WebSite" target="_blank"><i class="fa fa-list-ul"></i> Papers</a>
+                    <a href="http://dstyle0210.github.io/sitemap/" class="btn btn-xs btn-default" title="Sitemap - front-end developer's favorites bookmarks" target="_blank"><i class="fa fa-bookmark"></i> Sitemaps</a>
+                    <a href="http://dstyle0210.github.io/imageMap/" class="btn btn-xs btn-default" title="imagemap - HTML 'imageMap' Algorism Genenater" target="_blank"><i class="fa fa-link"></i> imageMap</a>
                 </div>
-            </div>
-
-            <h3>2. 이미지정보</h3>
-            <p>가로(px)*세로(px),아이디</p>
-            <div class="form-group">
-                <div class="form-inline">
-                    <input type="text" class="form-control" name="" id="imageWidth" style="width:20%" /> *
-                    <input type="text" class="form-control" name="" id="imageHeight" style="width:20%" />,
-                    <input type="text" class="form-control" name="" id="imageId" style="width:30%" />
-                </div>
-            </div>
-            <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default" onclick="crwalMapFn('coords');">Coords</button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default" onclick="crwalMapFn('px');">Position(px)</button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default" onclick="crwalMapFn('per');">Position(%)</button>
-                </div>
-            </div>
-
-            <h3>3. 선택된 이미지맵 정보</h3>
-            <div class="mapResult">
-                <div id="usemap"><textarea></textarea></div>
-                <div id="style"><textarea></textarea></div>
-                <div id="html"><textarea></textarea></div>
             </div>
         </div>
     </div>
@@ -79,6 +115,20 @@
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/1.1.1/intro.min.js"></script>
 <script type="text/javascript" src="js/imagemap.js"></script>
+<script>
+var introguide;
+$(function(){
+    introguide = introJs();
+    if(localStorage.getItem("intro")){
+        // 값이 있다면 실행 안함.
+    }else{
+        // 값이 없으면 실행함.
+        localStorage.setItem("intro","used");
+        introguide.start();
+    };
+});
+</script>
 </body>
 </html>
