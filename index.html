@@ -27,12 +27,12 @@
                 <section class="btnSec">
                     <a href="https://github.com/dstyle0210/imageMap" class="btn btn-xs btn-info" target="_blank" title="ImageMap GitHub 페이지 바로가기"><i class="fa fa-github-square fa-2x"></i></a>
                     <a href="https://github.com/dstyle0210/imageMap/tags" class="btn btn-xs btn-info" target="_blank" title="imageMap 다운로드 페이지 바로가기"><i class="fa fa-download fa-2x"></i></a>
-                    <button type="button" class="btn btn-xs btn-info" title="도움말 다시보기" data-step="7" data-intro="다시 보실려면 도움말을 클릭해주세요!" onclick="introguide.start();"><i class="fa fa-question-circle fa-2x"></i></button>
+                    <button type="button" class="btn btn-xs btn-info" title="도움말 다시보기" data-step="7" data-intro="다시 보실려면 도움말을 클릭해주세요!" id="introStartBtn"><i class="fa fa-question-circle fa-2x"></i></button>
                 </section>
                 <section class="stepSec step1Sec" data-step="2" data-intro="이미지맵을 구할 이미지경로(URL)을 넣고 '연결하기'를 누르세요!">
                     <h2>1. 이미지경로(URL)</h2>
-                    <div class="historyBtn" data-step="4" data-intro="한번 사용했던 URL을 사용자의 PC에 자동저장되고,불러올수 있어요!(최대 5개)"><button type="button" class="btn btn-xs btn-default" title="기존 URL 불러오기"><i class="fa fa-cloud-download fa-lg"></i> 최근 URL</button></div>
-                    <ul class="history">
+                    <div class="historyBtn" data-step="4" data-intro="한번 사용했던 URL을 사용자의 PC에 자동저장되고,불러올수 있어요!(최대 5개)"><button type="button" class="btn btn-xs btn-default" id="recentLoadBtn" title="기존 URL 불러오기"><i class="fa fa-cloud-download fa-lg"></i> 최근 URL</button></div>
+                    <ul class="history" id="recentHistoryList">
                         <li><button class="btn btn-xs btn-default"><i class="fa fa-link"></i> http://localhost/images/common/djasdasd.jpg</button></li>
                         <li><button class="btn btn-xs btn-default"><i class="fa fa-link"></i> http://localhost/images/common/djasdasd.jpg</button></li>
                         <li><button class="btn btn-xs btn-default"><i class="fa fa-link"></i> http://localhost/images/common/djasdasd.jpg</button></li>
@@ -41,7 +41,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" id="url" placeholder="이미지경로" />
                         <span class="input-group-btn">
-                            <button class="btn btn-info" type="button" onclick="setupFn();">연결하기</button>
+                            <button class="btn btn-info" type="button" id="setupBtn">연결하기</button>
                         </span>
                     </div>
                 </section>
@@ -72,13 +72,13 @@
                     <h2>3. 선택된 이미지맵 정보</h2>
                     <div class="btn-group btn-group-justified" data-step="6" data-intro="원하는 코드 방식으로 데이터를 가져올수 있어요!">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default" onclick="crwalMapFn('coords');">Coords</button>
+                            <button type="button" class="btn btn-default" id="crwalCoordsBtn">Coords</button>
                         </div>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default" onclick="crwalMapFn('px');">Position(px)</button>
+                            <button type="button" class="btn btn-default" id="crwalPxBtn">Position(px)</button>
                         </div>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default" onclick="crwalMapFn('per');">Position(%)</button>
+                            <button type="button" class="btn btn-default" id="crwalPerBtn">Position(%)</button>
                         </div>
                     </div>
                     <div class="mapResult">
@@ -98,7 +98,7 @@
                 </section>
             </div>
             <div class="copyright">
-                <div class="maintained"><span>This project is maintained by <a href="#">Dstyle</a></span></div>
+                <div class="maintained"><span>This project is maintained by <a href="mailto:dstyle0210@gmail.com">Dstyle</a></span></div>
                 <div class="familysite">
                     <a href="http://dstyle0210.github.io/" class="btn btn-xs btn-default" title="Dstyle - Front-End Developer" target="_blank"><i class="fa fa-krw"></i> Dstyle</a>
                     <a href="http://dstyle0210.github.io/papers/" class="btn btn-xs btn-default" title="Papers - Pages Structure Of WebSite" target="_blank"><i class="fa fa-list-ul"></i> Papers</a>
@@ -111,24 +111,6 @@
 </div>
 
 
-
-
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/1.1.1/intro.min.js"></script>
-<script type="text/javascript" src="js/imagemap.js"></script>
-<script>
-var introguide;
-$(function(){
-    introguide = introJs();
-    if(localStorage.getItem("intro")){
-        // 값이 있다면 실행 안함.
-    }else{
-        // 값이 없으면 실행함.
-        localStorage.setItem("intro","used");
-        introguide.start();
-    };
-});
-</script>
+<script type="text/javascript" data-main="js/imagemap" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.20/require.min.js"></script>
 </body>
 </html>

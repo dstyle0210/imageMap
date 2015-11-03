@@ -1,5 +1,5 @@
 /* Custom Bootstrap */
-html,body{height:100%;overflow: hidden;}
+html,body{height:100%;overflow: hidden;min-width:1280px;}
 .btn-link{background:#f5f5f5;}
 .container-fluid{height:100%;}
 .row{height:100%;}
@@ -7,9 +7,11 @@ html,body{height:100%;overflow: hidden;}
 
 
 /* 이미지에 올라가는 DIV설정 */
-#image>div{position:absolute;background:rgba(0,0,0,0.5);}
-#image .imageTitle{display:inline-block;margin-top:30%;font-size:22px;width:100%;font-family: 'Noto Sans KR', sans-serif;text-align:center;color:#999;}
-
+#image{
+  >div{position:absolute;background:rgba(0,0,0,0.5);}
+  >img{position:absolute;left:0;top:0;}
+  .imageTitle{display:inline-block;margin-top:30%;font-size:22px;width:100%;font-family: 'Noto Sans KR', sans-serif;text-align:center;color:#999;}
+}
 
 /* 상단 부분 */
 header{width:100%;overflow: hidden;text-align:center;
@@ -31,7 +33,10 @@ header{width:100%;overflow: hidden;text-align:center;
 
   // 이미지경로
   .step1Sec{position:relative;
-    .history{display:none;}
+    .history{display:none;
+      i{margin-right:5px;}
+      button{overflow:hidden;text-overflow:ellipsis;max-width:100%;}
+    }
     .historyBtn{position:absolute;top:0;right:0;}
     ul,li{margin:0;padding:0;list-style:none;}
     li{padding-bottom:5px;}

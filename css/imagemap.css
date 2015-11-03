@@ -3,6 +3,7 @@ html,
 body {
   height: 100%;
   overflow: hidden;
+  min-width: 1280px;
 }
 .btn-link {
   background: #f5f5f5;
@@ -24,6 +25,11 @@ body {
 #image > div {
   position: absolute;
   background: rgba(0, 0, 0, 0.5);
+}
+#image > img {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 #image .imageTitle {
   display: inline-block;
@@ -83,6 +89,14 @@ header p {
 }
 .imageControl .step1Sec .history {
   display: none;
+}
+.imageControl .step1Sec .history i {
+  margin-right: 5px;
+}
+.imageControl .step1Sec .history button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 .imageControl .step1Sec .historyBtn {
   position: absolute;
