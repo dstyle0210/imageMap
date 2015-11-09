@@ -101,6 +101,11 @@ header p {
 .imageControl .step1Sec .historyBtn {
   position: absolute;
   top: 0;
+  right: 105px;
+}
+.imageControl .step1Sec .swicthBtn {
+  position: absolute;
+  top: 0;
   right: 0;
 }
 .imageControl .step1Sec ul,
@@ -133,13 +138,13 @@ header p {
   color: #333;
   text-align: center;
 }
-.imageControl .copyright a,
-.imageControl .copyright span {
-  font-family: 'Droid Sans', sans-serif;
-}
 .imageControl .copyright .maintained {
   padding-top: 4px;
   float: left;
+}
+.imageControl .copyright .maintained a,
+.imageControl .copyright .maintained span {
+  font-family: 'Droid Sans', sans-serif;
 }
 .imageControl .copyright .familysite {
   float: right;

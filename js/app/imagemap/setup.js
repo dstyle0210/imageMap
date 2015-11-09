@@ -1,9 +1,8 @@
 define(["jquery"],function($){
-    console.log("setup");
-    function setupFn($obj,callFn){
+    function setupFn($obj,type,callFn){
         var img = new Image();
         var w, h, url;
-        var url = $obj.url.val();
+
         $(img).on("load",function(){
             w = $(this).width();
             h = $(this).height();
@@ -19,7 +18,18 @@ define(["jquery"],function($){
             callFn.call(null,$obj);
         });
         $obj.canvas.append(img);
-        img.src = url;
+
+        if(type=="url"){ // 외부에 있는 이미지 파일 로딩
+            url = img.src = $obj.url.val();
+        }else{
+            var file = $obj.file.get(0)
+            var reader = new FileReader();
+            reader.onload = function(e){
+                url = img.src = e.target.result;
+            };
+            reader.readAsDataURL(file.files[0]);
+        };
+
     };
     return setupFn;
 });

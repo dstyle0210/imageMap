@@ -32,19 +32,35 @@ requirejs(["jquery","intro"],function($,introJs){
 });
 
 // imagemap 기능연결.
-requirejs(["jquery","app/imagemap/getUsedElement","app/imagemap/setup","app/imagemap/canvasAction","app/imagemap/crawlFn","app/imagemap/recentURLLoad"],function($,$element,setupFn,canvasAction,crawlFn,recentURL){
+requirejs(["jquery","app/imagemap/getUsedElement","app/imagemap/setup","app/imagemap/canvasAction","app/imagemap/crawlFn","app/imagemap/recentURLLoad","app/imagemap/setURLInput"],function($,$element,setupFn,canvasAction,crawlFn,recentURL,setURLInput){
     var $obj = $element;
     $(function(){
         // 연결하기
         $("#setupBtn").on("click",function(){ // 연결하기 버튼을 누르면.
             var url = $obj.url.val();
             if(url){
-                setupFn($obj,function(){ // 이미지로딩 및 정보정리가 되고 콜백 함수 실행
+                setupFn($obj,"url",function(){ // 이미지로딩 및 정보정리가 되고 콜백 함수 실행
                     canvasAction($obj.canvas); // 맵이 적용될 부분에 이벤트 삽입.
                     recentURL.set(url); // 최근 URL정보로 등록.
                 });
             };
         });
+
+        $("#setupBtn2").on("click",function(){
+            setupFn($obj,"file",function(){ // 이미지로딩 및 정보정리가 되고 콜백 함수 실행
+                canvasAction($obj.canvas); // 맵이 적용될 부분에 이벤트 삽입.
+            });
+        });
+
+        // URL로 불러오기로 셋팅(초기값)
+        $("#urlInputOpen").on("click",function(){
+            setURLInput($obj,"url");
+        });
+        // file로 불러오기로 셋팅
+        $("#fileInputOpen").on("click",function(){
+            setURLInput($obj,"file");
+        });
+
 
         // 이미지맵으로 불러오기
         $("#crwalCoordsBtn").on("click",function(){

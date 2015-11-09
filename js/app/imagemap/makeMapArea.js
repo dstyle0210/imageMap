@@ -1,5 +1,4 @@
 define(["jquery"],function($){
-    console.log("makeMapArea");
     function makeDivFn(mapDiv){
         var target = mapDiv;
         target.append("<input type='text' class='title' placeholder='버튼설명' />");

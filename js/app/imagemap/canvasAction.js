@@ -1,5 +1,4 @@
 define(["jquery","app/imagemap/makeMapArea"],function($,makeDivFn){
-    console.log("canvasAction");
     function canvasFn($canvas){
         var sPos,mPos,idx=0; // 시작점,중간점,종료점,인덱스
         var make = false; // 맵을 만드는 중인가?
