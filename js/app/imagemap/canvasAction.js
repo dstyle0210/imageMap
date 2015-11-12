@@ -5,6 +5,7 @@ define(["jquery","app/imagemap/makeMapArea"],function($,makeDivFn){
         var drag = false; // 드래그중인가?
         var target; // 생성되고 있는 엘리먼트
         var image = $canvas.get(0); // 캔바스에 그려진 이미지.
+        $canvas.off(); // 새로 셋팅이 될수도 있기 때문에, 이벤트 초기화
 
         // 마우스다운=> 드래그 시작.
         $canvas.on("mousedown",function(e){
