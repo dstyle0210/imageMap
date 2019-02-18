@@ -1,7 +1,7 @@
 define(["jquery"],function($){
     // 소수점을 퍼센트로 바꿈.
     function getPer(num){
-        return (Math.ceil((num*100)*100000000))/100000000;
+        return ((Math.ceil((num*100)*100000000))/100000000).toFixed(2);
     };
 
     // 맵의 데이터를 정리하여 Json으로 리턴.
